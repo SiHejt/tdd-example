@@ -27,12 +27,22 @@ public class RqTest {
     }
 
     @Test
-    @DisplayName("getActionName")
+    @DisplayName("getParam")
     void t3() {
 
-        Rq rq = new Rq("삭제?id=1");
-        String actionName = rq.getActionName();
+        Rq rq = new Rq("목록?keyword=자바");
+        String param = rq.getParam("keyword");
 
-        assertThat(actionName).isEqualTo("삭제");
+        assertThat(param).isEqualTo("자바");
+    }
+
+    @Test
+    @DisplayName("getParam")
+    void t4() {
+
+        Rq rq = new Rq("목록?keyword=자바&keywordType=title");
+        String param = rq.getParam("keywordType");
+
+        assertThat(param).isEqualTo("title");
     }
 }
